@@ -1,12 +1,13 @@
 #include <string>
-// #include "hashmap.cpp"
+#include <functional>
 #include "book.cpp"
+#include "linkedList.cpp"
 
 using namespace std;
 
 class Library {
-  //private:
-    //Hashmap books;
+  private:
+    LinkedList<Book> booksList;
   public:
     void addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn);
     void deletebook(int id);
@@ -14,6 +15,7 @@ class Library {
     void issuebook(int id);
     void viewbook(int id);
     void printbook(Book book);
+    void printlibrary();
 };
 
 void Library::addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn) {
@@ -25,11 +27,11 @@ void Library::addbook(int idIn, string nameIn, string authorIn, string categoryI
   book.quantity = quantityIn;
   book.price = priceIn;
   book.rackNo = rackNoIn;
-  printbook(book);
+  booksList.createnode(book);
 }
 
 void Library::deletebook(int id) {
-  
+
 }
 
 void Library::searchbook(int id) {
@@ -41,10 +43,7 @@ void Library::issuebook(int id) {
 }
 
 void Library::viewbook(int id) {
-  
-}
-
-void Library::printbook(Book book) {
+  Book book = booksList.get(id);
   cout << "id: " << book.id << endl;
   cout << "name: " << book.name << endl;
   cout << "author: " << book.author << endl;
