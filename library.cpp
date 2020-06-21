@@ -11,11 +11,9 @@ class Library {
   public:
     void addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn);
     void deletebook(int id);
-    void searchbook(int id);
-    void issuebook(int id);
+    void searchbook(string name);
+    void issuebook(int id, int studentId);
     void viewbook(int id);
-    void printbook(Book book);
-    void printlibrary();
 };
 
 void Library::addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn) {
@@ -31,14 +29,14 @@ void Library::addbook(int idIn, string nameIn, string authorIn, string categoryI
 }
 
 void Library::deletebook(int id) {
-
-}
-
-void Library::searchbook(int id) {
   
 }
 
-void Library::issuebook(int id) {
+void Library::searchbook(string name) {
+  
+}
+
+void Library::issuebook(int id, int studentId) {
   
 }
 
