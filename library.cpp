@@ -1,13 +1,12 @@
 #include <string>
-#include <functional>
+#include <map>
 #include "book.cpp"
-#include "linkedList.cpp"
 
 using namespace std;
 
 class Library {
   private:
-    LinkedList<Book> booksList;
+    map<int, Book> booksmap;
   public:
     void addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn);
     void deletebook(int id);
@@ -25,11 +24,11 @@ void Library::addbook(int idIn, string nameIn, string authorIn, string categoryI
   book.quantity = quantityIn;
   book.price = priceIn;
   book.rackNo = rackNoIn;
-  booksList.createnode(book);
+  booksmap.insert({book.id, book});
 }
 
 void Library::deletebook(int id) {
-  
+  booksmap.erase(id);
 }
 
 void Library::searchbook(string name) {
@@ -41,7 +40,7 @@ void Library::issuebook(int id, int studentId) {
 }
 
 void Library::viewbook(int id) {
-  Book book = booksList.get(id);
+  Book book = booksmap[id];
   cout << "id: " << book.id << endl;
   cout << "name: " << book.name << endl;
   cout << "author: " << book.author << endl;
