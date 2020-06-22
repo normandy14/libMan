@@ -1,6 +1,7 @@
 #include <string>
 #include <map>
 #include "book.cpp"
+#include "functions.cpp"
 
 using namespace std;
 
@@ -32,7 +33,13 @@ void Library::deletebook(int id) {
 }
 
 void Library::searchbook(string name) {
-  
+  string title;
+  for(map<int,Book>::iterator it = booksmap.begin(); it != booksmap.end(); ++it) {
+    title = it -> second.name;
+    if (tokenSortRatio(name, title) > 0.40) {
+      viewbook(it -> second.id);
+    }
+  }
 }
 
 void Library::issuebook(int id, int studentId) {
