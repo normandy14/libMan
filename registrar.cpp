@@ -45,7 +45,6 @@ void Registrar::viewStudent(int id) {
   Book book;
   cout << student.checkedBooks.size() << endl;
   for (vector<Book>::iterator it = student.checkedBooks.begin() ; it != student.checkedBooks.end(); ++it) {
-    cout << "here" << endl;
     book = *it;
     cout << "id: " << book.id << endl;
     cout << "name: " << book.name << endl;
