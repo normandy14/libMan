@@ -1,3 +1,7 @@
+#ifndef __book_h_
+#define __book_h_
+#endif
+
 #include <iostream>
 #include <string>
 

@@ -1,20 +1,9 @@
 #include <string>
 #include <map>
-#include "book.cpp"
+#include "library.h"
 #include "functions.cpp"
 
 using namespace std;
-
-class Library {
-  private:
-    map<int, Book> booksmap;
-  public:
-    void addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn);
-    void deletebook(int id);
-    void searchbook(string name);
-    void issuebook(int id, int studentId);
-    void viewbook(int id);
-};
 
 void Library::addbook(int idIn, string nameIn, string authorIn, string categoryIn, int quantityIn, int priceIn, int rackNoIn) {
   Book book;
@@ -34,16 +23,12 @@ void Library::deletebook(int id) {
 
 void Library::searchbook(string name) {
   string title;
-  for(map<int,Book>::iterator it = booksmap.begin(); it != booksmap.end(); ++it) {
+  for (map<int,Book>::iterator it = booksmap.begin(); it != booksmap.end(); ++it) {
     title = it -> second.name;
     if (tokenSortRatio(name, title) > 0.40) {
       viewbook(it -> second.id);
     }
   }
-}
-
-void Library::issuebook(int id, int studentId) {
-  
 }
 
 void Library::viewbook(int id) {
@@ -55,4 +40,8 @@ void Library::viewbook(int id) {
   cout << "quantity: " << book.quantity << endl;
   cout << "price: " << book.price << endl;
   cout << "rackNo: " << book.rackNo << endl;
+}
+
+Book Library::getbook(int id) {
+  return booksmap[id];
 }

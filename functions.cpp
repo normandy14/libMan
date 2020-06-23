@@ -1,12 +1,9 @@
 #include <string>
 #include <cctype>
 #include <iostream>
+#include "functions.h"
 
 using namespace std;
-
-int min(int x, int y, int z);
-float tokenSortRatio(string s1, string s2);
-char to_lowercase(char c);
 
 int min(int x, int y, int z) {
   if (x > y) {

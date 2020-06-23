@@ -1,0 +1,16 @@
+#ifndef __student_h_
+#define __student_h_
+#endif
+
+#include <string>
+#include <vector>
+// #include "book.h"
+
+using namespace std;
+
+struct Student {
+  int id;
+  string name;
+  string email;
+  vector<Book> checkedBooks;
+};
