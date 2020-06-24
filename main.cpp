@@ -2,7 +2,10 @@
 #include "library.cpp"
 #include "registrar.cpp"
 
+using namespace std;
+
 void issueBook(int bookId, int studentId, Library *library, Registrar *registry);
+void returnBook(int bookId, int studentId, Library *library, Registrar *registry);
 
 int main() {
   // Create library, add books to library
@@ -22,8 +25,13 @@ int main() {
   issueBook(200, 3, &lib, &reg);
   issueBook(400, 3, &lib, &reg);
   issueBook(400, 2, &lib, &reg);
-  reg.viewStudent(3);
+  
   lib.viewbook(400);
+  returnBook(400, 3, &lib, &reg);
+  returnBook(400, 3, &lib, &reg);
+  returnBook(400, 3, &lib, &reg);
+  lib.viewbook(400);
+  
   return 0;
 }
 
@@ -32,4 +40,19 @@ void issueBook(int bookId, int studentId, Library *library, Registrar *registry)
   Student student = registry -> getStudent(studentId);
   student.checkedBooks.push_back(book);
   registry -> updateStudent(studentId, student);
+}
+
+void returnBook(int bookId, int studentId, Library *library, Registrar *registry) {
+  Student student = registry -> getStudent(studentId);
+  int i = 0;
+  for (auto const& book: student.checkedBooks) {
+    if (book.id == bookId) {
+      cout << book.name << endl;
+      library -> checkinbook(bookId);
+      student.checkedBooks.erase(student.checkedBooks.begin() + i);
+      registry -> updateStudent(studentId, student);
+      break;
+    }
+    i++;
+  }
 }
