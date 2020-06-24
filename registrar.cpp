@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Adds a student to the registrar
 void Registrar::addStudent(int idIn, string nameIn, string emailIn) {
   Student student;
   student.id = idIn;
@@ -13,6 +14,7 @@ void Registrar::addStudent(int idIn, string nameIn, string emailIn) {
   registrarMap.insert({student.id, student});
 }
 
+// Searches and returns the books that match the user title
 void Registrar::searchStudent(string name) {
   string name_;
   for (map<int,Student>::iterator it = registrarMap.begin(); it != registrarMap.end(); ++it) {
@@ -23,6 +25,7 @@ void Registrar::searchStudent(string name) {
   }
 }
 
+// Modifies a student's attributes
 void Registrar::modifyStudent(int id, string nameIn = "", string emailIn = "") {
   Student student = registrarMap[id];
   if (nameIn != "") {
@@ -34,10 +37,12 @@ void Registrar::modifyStudent(int id, string nameIn = "", string emailIn = "") {
   registrarMap[id] = student;
 }
 
+// Updates a student
 void Registrar::updateStudent(int id, Student student) {
   registrarMap[id] = student;
 }
 
+// Displays the student's attributes
 void Registrar::viewStudent(int id) {
   Student student = registrarMap[id];
   cout << "name: " << student.name << endl;
@@ -52,10 +57,12 @@ void Registrar::viewStudent(int id) {
   }
 }
 
+// Removes a student from the registrar
 void Registrar::deleteStudent(int id) {
   registrarMap.erase(id);
 }
 
+// Returns a student from the registrar
 Student Registrar::getStudent(int id) {
   return registrarMap[id];
 }

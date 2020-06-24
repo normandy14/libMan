@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Returns the min of three ints
 int min(int x, int y, int z) {
   if (x > y) {
     if (y > z) {
@@ -20,6 +21,7 @@ int min(int x, int y, int z) {
   }
 }
 
+// Computes the difference between two strings
 float tokenSortRatio(string s1, string s2) {
   int rLen;
   int cLen;
@@ -59,6 +61,7 @@ float tokenSortRatio(string s1, string s2) {
   return ratio;
 }
 
+// Coverts a char to lowercase
 char to_lowercase(char c) {
   if ( c >= 'A' && c <= 'Z') {
     return c + 32;

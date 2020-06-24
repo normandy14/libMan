@@ -28,13 +28,15 @@ int main() {
   
   lib.viewbook(400);
   returnBook(400, 3, &lib, &reg);
-  returnBook(400, 3, &lib, &reg);
-  returnBook(400, 3, &lib, &reg);
   lib.viewbook(400);
   
   return 0;
 }
 
+/*
+  Orchestrates interaction between library and registrar.
+  Removes a book from the library to the inventory of a student
+*/
 void issueBook(int bookId, int studentId, Library *library, Registrar *registry) {
   Book book = library -> checkoutbook(bookId);
   Student student = registry -> getStudent(studentId);
@@ -42,6 +44,10 @@ void issueBook(int bookId, int studentId, Library *library, Registrar *registry)
   registry -> updateStudent(studentId, student);
 }
 
+/*
+  Orchestrates interaction between library and registrar.
+  Removes a book from the the inventory of a student back to the library
+*/
 void returnBook(int bookId, int studentId, Library *library, Registrar *registry) {
   Student student = registry -> getStudent(studentId);
   int i = 0;
