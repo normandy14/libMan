@@ -17,5 +17,6 @@ class Library {
     void deletebook(int id);
     void searchbook(string name);
     void viewbook(int id);
-    Book getbook(int id);
+    Book checkoutbook(int id);
+    void checkinbook(int id);
 };

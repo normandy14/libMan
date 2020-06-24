@@ -42,6 +42,18 @@ void Library::viewbook(int id) {
   cout << "rackNo: " << book.rackNo << endl;
 }
 
-Book Library::getbook(int id) {
+Book Library::checkoutbook(int id) {
+  if (booksmap[id].quantity == 0) {
+    throw -1;
+  }
+  Book book = booksmap[id];
+  book.quantity -= 1;
+  booksmap[id] = book;
   return booksmap[id];
+}
+
+void Library::checkinbook(int id) {
+  Book book = booksmap[id];
+  book.quantity += 1;
+  booksmap[id] = book;
 }

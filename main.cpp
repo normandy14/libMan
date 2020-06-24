@@ -2,7 +2,7 @@
 #include "library.cpp"
 #include "registrar.cpp"
 
-Registrar issueBook(int bookId, int studentId, Library library, Registrar registry);
+void issueBook(int bookId, int studentId, Library *library, Registrar *registry);
 
 int main() {
   // Create library, add books to library
@@ -19,16 +19,17 @@ int main() {
   reg.addStudent(2, "John Smith", "john.smith@gmail.com");
   reg.addStudent(3, "Joseph Joel", "joseph.joel@gmail.com");
   
-  reg = issueBook(200, 3, lib, reg);
-  reg = issueBook(400, 3, lib, reg);
+  issueBook(200, 3, &lib, &reg);
+  issueBook(400, 3, &lib, &reg);
+  issueBook(400, 2, &lib, &reg);
   reg.viewStudent(3);
+  lib.viewbook(400);
   return 0;
 }
 
-Registrar issueBook(int bookId, int studentId, Library library, Registrar registry) {
-  Book book = library.getbook(bookId);
-  Student student = registry.getStudent(studentId);
+void issueBook(int bookId, int studentId, Library *library, Registrar *registry) {
+  Book book = library -> checkoutbook(bookId);
+  Student student = registry -> getStudent(studentId);
   student.checkedBooks.push_back(book);
-  registry.updateStudent(studentId, student);
-  return registry;
+  registry -> updateStudent(studentId, student);
 }
