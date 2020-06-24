@@ -1,10 +1,14 @@
 # Library Management System
 
-A library management system.
+![Library](https://thumbs.dreamstime.com/t/bookshelf-background-shelves-full-colorful-books-home-library-books-vector-close-up-illustration-cartoon-design-style-99342842.jpg)
+
+A fictional library management system.
+Two main classes are library and registrar.
+Students in registrar interact with books in the library
 
 ## Motivation
 
-Practice C++ software engineering
+To practice C++ software engineering
 
 ## Getting Started
 
@@ -25,28 +29,6 @@ A step by step series of examples that tell you how to get a development env run
 
 ```
 g++ main.cpp -o main.a
-```
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-1. Enter the shell enviroment
-
-```
-pipenv shell
-```
-
-2. Install the dependencies
-
-```
-pipenv install --dev
-```
-
-3. Run the tests
-
-```
-pipenv run nosetests testApp.py
 ```
 
 ## Contributing
