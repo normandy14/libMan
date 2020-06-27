@@ -22,10 +22,12 @@ int main() {
   reg.addStudent(2, "John Smith", "john.smith@gmail.com");
   reg.addStudent(3, "Joseph Joel", "joseph.joel@gmail.com");
   
+  // Remove a book from the library and credit it to a student's account in the registry
   issueBook(200, 3, &lib, &reg);
   issueBook(400, 3, &lib, &reg);
   issueBook(400, 2, &lib, &reg);
   
+  // View the change in quantity of a book in the library before and after its return
   lib.viewbook(400);
   returnBook(400, 3, &lib, &reg);
   lib.viewbook(400);

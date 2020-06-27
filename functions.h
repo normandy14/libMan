@@ -4,4 +4,5 @@
 
 int min(int x, int y, int z);
 float tokenSortRatio(string s1, string s2);
-char to_lowercase(char c);
+string lowerCaseStr(string s);
+char toLowerChar(char c);

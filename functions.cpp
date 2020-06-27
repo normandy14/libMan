@@ -23,28 +23,25 @@ int min(int x, int y, int z) {
 
 // Computes the difference between two strings
 float tokenSortRatio(string s1, string s2) {
-  int rLen;
-  int cLen;
   int cost;
   int min_;
   float ratio;
-  for (char &c: s1) {
-    c = to_lowercase(c);
-  }
-  for (char &c: s2) {
-    c = to_lowercase(c);
-  }
-  rLen = s1.length();
-  cLen = s2.length();
-  int distMatrix[rLen][cLen] = { };
+  int rLen = s1.length();
+  int cLen = s2.length();
+  s1 = lowerCaseStr(s1);
+  s2 = lowerCaseStr(s2);
   
+  int matrix[rLen][cLen] = { };
+  
+  // initalize matrix
   for (int i=0; i < rLen; i++) {
     for (int j=0; j < cLen; j++) {
-      distMatrix[i][0] = i;
-      distMatrix[0][j] = j;
+      matrix[i][0] = i;
+      matrix[0][j] = j;
     }
   }
-
+  
+  // compute the cost, numeric value of performing an operation on the strings
   for (int i=1; i < rLen; i++) {
     for (int j=1; j < cLen; j++) {
       if (s1[i] == s2[j]) {
@@ -53,16 +50,27 @@ float tokenSortRatio(string s1, string s2) {
       else {
         cost = 2;
       }
-      min_ = min(distMatrix[i-1][j] + 1, distMatrix[i][j-1] + 1, distMatrix[i-1][j-1] + cost);
-      distMatrix[i][j] = min_;
+      // choose the min of the operations, and store in the matrix
+      min_ = min(matrix[i-1][j] + 1, matrix[i][j-1] + 1, matrix[i-1][j-1] + cost);
+      matrix[i][j] = min_;
     }
   }
-  ratio = ((rLen + cLen) - distMatrix[rLen-1][cLen-1]) / (float)(rLen + cLen);
+  // calculate the ratio
+  ratio = ((rLen + cLen) - matrix[rLen-1][cLen-1]) / (float)(rLen + cLen);
   return ratio;
 }
 
+// Converts a string to lowercase
+string lowerCaseStr(string s) {
+  for (char &c: s) {
+    cout << c << endl;
+    c = toLowerChar(c);
+  }
+  return s;
+}
+
 // Coverts a char to lowercase
-char to_lowercase(char c) {
+char toLowerChar(char c) {
   if ( c >= 'A' && c <= 'Z') {
     return c + 32;
   }

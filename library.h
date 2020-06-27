@@ -5,7 +5,6 @@
 #include <string>
 #include <map>
 #include "book.h"
-//#include "registrar.h"
 
 using namespace std;
 
