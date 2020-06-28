@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "registrar.h"
-#include "functions.h"
+#include "header/registrar.h"
+#include "header/functions.h"
 
 using namespace std;
 

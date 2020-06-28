@@ -1,7 +1,7 @@
 #include <string>
 #include <cctype>
 #include <iostream>
-#include "functions.h"
+#include "header/functions.h"
 
 using namespace std;
 
