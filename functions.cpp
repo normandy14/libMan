@@ -63,7 +63,6 @@ float tokenSortRatio(string s1, string s2) {
 // Converts a string to lowercase
 string lowerCaseStr(string s) {
   for (char &c: s) {
-    cout << c << endl;
     c = toLowerChar(c);
   }
   return s;
